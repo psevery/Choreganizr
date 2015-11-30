@@ -19,6 +19,15 @@ public class Chore {
 		this.dueDate = null;
 	}
 	
+	public Chore(String title, String description, Date dueDate) {
+		this.choreID = nextChoreID;
+		nextChoreID++;
+		this.title = title;
+		this.isComplete = false;
+		this.dueDate = dueDate;
+		this.description = description;
+	}
+	
 	public String getTitle() {
 		return title;
 	}

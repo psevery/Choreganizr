@@ -20,7 +20,7 @@ import javax.swing.BoxLayout;
 
 public class Window {
 
-	private JFrame frame;
+	private JFrame frmChoreganizr;
 
 	/**
 	 * Launch the application.
@@ -30,7 +30,7 @@ public class Window {
 			public void run() {
 				try {
 					Window window = new Window();
-					window.frame.setVisible(true);
+					window.frmChoreganizr.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -50,16 +50,17 @@ public class Window {
 	 */
 	private void initialize() {
 		//main frame of the window, all panels are embedded on it
-		frame = new JFrame();
-		frame.getContentPane().setBackground(new Color(0, 191, 255));
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmChoreganizr = new JFrame();
+		frmChoreganizr.setTitle("Choreganizr");
+		frmChoreganizr.getContentPane().setBackground(new Color(0, 191, 255));
+		frmChoreganizr.setBounds(100, 100, 450, 300);
+		frmChoreganizr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{1.0, Double.MIN_VALUE};
-		frame.getContentPane().setLayout(gridBagLayout);
+		frmChoreganizr.getContentPane().setLayout(gridBagLayout);
 		//tabbed pane allows panels to be tabs
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBackground(new Color(255, 255, 255));
@@ -67,7 +68,7 @@ public class Window {
 		gbc_tabbedPane.fill = GridBagConstraints.BOTH;
 		gbc_tabbedPane.gridx = 0;
 		gbc_tabbedPane.gridy = 0;
-		frame.getContentPane().add(tabbedPane, gbc_tabbedPane);
+		frmChoreganizr.getContentPane().add(tabbedPane, gbc_tabbedPane);
 		
 		//main tabs at top (each tab is compased of a panel)
 		JPanel panelAdd = new CreateChorePanel();

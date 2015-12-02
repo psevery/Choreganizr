@@ -1,13 +1,19 @@
 import javax.swing.JPanel;
+
 import java.awt.GridBagLayout;
+
 import javax.swing.JLabel;
+
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JSlider;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -108,10 +114,12 @@ public class CreateChorePanel extends JPanel {
 					String user = userComboBox.getSelectedItem().toString();
 					Integer timeRemaining = timeSlider.getValue();
 					//House.createCustomChore()	
-					TabbedViewChorePanel.getInstance().addNewChorePanel(name, user, difficulty.toString());
+					ViewChoreTabsPanel.getInstance().addNewChorePanel(name, user, timeRemaining.toString(), difficulty.toString());
+					nameTextField.setText("");
 				}
 				catch(Exception ex ){
 					//not all values filled out so do something
+					btnSubmit.setBackground(new Color(255,0,0));
 				}
 			}
 		});

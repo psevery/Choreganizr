@@ -82,16 +82,20 @@ public class Window implements Observer{
 		gbc_tabbedPane.gridy = 0;
 		frmChoreganizr.getContentPane().add(tabbedPane, gbc_tabbedPane);
 		
-		//main tabs at top (each tab is compased of a panel)
+// these panels are opened by the main tabs at top (each tab is composed of a panel)
+		//welcome and login panel
+		JPanel panelHome = new HomePanel();
+		tabbedPane.addTab("Home", null, panelHome, null);
+		//the view chores tab panel this panel is composed of ViewChorePanel tabs.
+		JTabbedPane panelView = ViewChoreTabsPanel.getInstance();
+		tabbedPane.addTab("View Chores", null, panelView, null);
+		//to create a custom chore
 		JPanel panelAdd = new CreateChorePanel();
 		tabbedPane.addTab("Add Chores", null, panelAdd, null);
-		
+		//to manage chores (mark completed)
 		JPanel panelManage = new JPanel();
 		tabbedPane.addTab("Manage Chores", null, panelManage, null);
 		
-		//JTabbedPane panelView = TabbedViewChorePanel.getInstance();
-		JTabbedPane panelView = TabbedViewChorePanel.getInstance();
-		tabbedPane.addTab("View Chores", null, panelView, null);
 
 	}
 

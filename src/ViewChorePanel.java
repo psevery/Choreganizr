@@ -1,12 +1,17 @@
 import javax.swing.JPanel;
+
 import java.awt.GridBagLayout;
+
 import javax.swing.JLabel;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.Panel;
+import java.util.List;
 
 
 public class ViewChorePanel extends JPanel {
-
+	
 	/**
 	 * Create the panel.
 	 */
@@ -78,5 +83,7 @@ public class ViewChorePanel extends JPanel {
 		add(lblBoolean, gbc_lblBoolean);
 
 	}
+	
 
+	
 }

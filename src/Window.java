@@ -1,27 +1,39 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+
 import java.awt.CardLayout;
 import java.awt.Color;
+
 import javax.swing.JTextArea;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
+
 import javax.swing.JLabel;
+
 import java.awt.Insets;
 import java.awt.Font;
+
 import javax.swing.JTabbedPane;
+
 import java.awt.BorderLayout;
+import java.util.Observable;
+import java.util.Observer;
+
 import javax.swing.JPanel;
+
 import net.miginfocom.swing.MigLayout;
+
 import javax.swing.JTree;
 import javax.swing.JScrollPane;
 import javax.swing.BoxLayout;
 
 
-public class Window {
+public class Window implements Observer{
 
 	private JFrame frmChoreganizr;
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -77,19 +89,23 @@ public class Window {
 		JPanel panelManage = new JPanel();
 		tabbedPane.addTab("Manage Chores", null, panelManage, null);
 		
-		//this panel is composed of another tabbed plane for the chores
-		JTabbedPane paneView = new JTabbedPane(JTabbedPane.BOTTOM);
-		paneView.setBackground(new Color(119, 136, 153));
-		tabbedPane.addTab("View Chores", null, paneView, null);
-		//these are the chore tabs
-		JPanel garbagePanel = new ViewChorePanel("Garbage", "Pat", "5", "False");
-		paneView.addTab("Garbage", null, garbagePanel, null);
-		
-		JPanel dishesPanel = new ViewChorePanel("Dishes", "Tyler", "3", "False");
-		paneView.addTab("Dishes", null, dishesPanel, null);
-		
-		JPanel vaccumPanel = new ViewChorePanel("Vaccum", "Ryan", "4", "True");
-		vaccumPanel.setBackground(new Color(0, 255, 127));
-		paneView.addTab("Vaccum", null, vaccumPanel, null);
+		//JTabbedPane panelView = TabbedViewChorePanel.getInstance();
+		JTabbedPane panelView = TabbedViewChorePanel.getInstance();
+		tabbedPane.addTab("View Chores", null, panelView, null);
+
 	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		
+		
+	}
+	public void redraw(){
+		frmChoreganizr.revalidate(); 
+		frmChoreganizr.repaint(); 
+	}
+	public JFrame getChorganizr(){
+		return frmChoreganizr;
+	}
+	
 }

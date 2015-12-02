@@ -9,6 +9,11 @@ public class House {
 	private ArrayList<Chore> chores;
 	private User head;
 	
+	
+	public House(){
+		
+	}
+	
 	public void addHousemate(User user) {
 		this.members.add(user);
 	}

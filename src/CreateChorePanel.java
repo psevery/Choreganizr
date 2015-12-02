@@ -8,6 +8,8 @@ import javax.swing.JTextField;
 import javax.swing.JSlider;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class CreateChorePanel extends JPanel {
@@ -54,12 +56,12 @@ public class CreateChorePanel extends JPanel {
 		timeSlider.setMaximum(7);
 		timeSlider.setMajorTickSpacing(1);
 		timeSlider.setValue(5);
-		GridBagConstraints gbc_slider_1_1 = new GridBagConstraints();
-		gbc_slider_1_1.gridheight = 2;
-		gbc_slider_1_1.insets = new Insets(0, 0, 5, 5);
-		gbc_slider_1_1.gridx = 4;
-		gbc_slider_1_1.gridy = 3;
-		add(timeSlider, gbc_slider_1_1);
+		GridBagConstraints tSlider = new GridBagConstraints();
+		tSlider.gridheight = 2;
+		tSlider.insets = new Insets(0, 0, 5, 5);
+		tSlider.gridx = 4;
+		tSlider.gridy = 3;
+		add(timeSlider, tSlider);
 		
 		JLabel lblSelectMember = new JLabel("Select Member:");
 		GridBagConstraints gbc_lblSelectMember = new GridBagConstraints();
@@ -97,6 +99,22 @@ public class CreateChorePanel extends JPanel {
 		add(slider, difficultySlider);
 		
 		JButton btnSubmit = new JButton("Submit");
+		btnSubmit.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try{
+					Integer difficulty = slider.getValue();
+					String name = nameTextField.getText();
+					String user = userComboBox.getSelectedItem().toString();
+					Integer timeRemaining = timeSlider.getValue();
+					//House.createCustomChore()	
+					TabbedViewChorePanel.getInstance().addNewChorePanel(name, user, difficulty.toString());
+				}
+				catch(Exception ex ){
+					//not all values filled out so do something
+				}
+			}
+		});
 		GridBagConstraints gbc_btnSubmit = new GridBagConstraints();
 		gbc_btnSubmit.gridwidth = 10;
 		gbc_btnSubmit.gridx = 0;

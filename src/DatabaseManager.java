@@ -6,8 +6,7 @@ public class DatabaseManager {
 	
 	private DatabaseManager() {}
 	
-	@SuppressWarnings("unused")
-	private static synchronized DatabaseManager getInstance() {
+	public static synchronized DatabaseManager getInstance() {
 		if (databaseManager == null) {
 			databaseManager = new DatabaseManager();
 		}

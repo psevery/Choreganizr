@@ -1,3 +1,4 @@
+package def;
 import java.awt.Color;
 import java.util.Observable;
 import java.util.Observer;

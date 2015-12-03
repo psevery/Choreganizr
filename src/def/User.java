@@ -1,22 +1,43 @@
+package def;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class User {
 	
+	@Id 
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	protected int userID;
-	protected String userName;
-	protected String userEmail;
-	protected House house;
-	protected static int nextUserID = 0;
 	
-	public User(String userName, String userEmail, House house) {
-		this.userID = nextUserID;
-		nextUserID++;
-		this.userName = userName;
-		this.userEmail = userEmail;
+	@Column
+	protected String userName;
+	
+	@Column
+	protected String userEmail;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	protected House house;
+	
+	public House getHouse() {
+		return house;
+	}
+
+	public void setHouse(House house) {
 		this.house = house;
 	}
 	
 	public int getUserID() {
 		return userID;
+	}
+	
+	public void setUserID(int userID) {
+		this.userID = userID;
 	}
 
 	public String getUserEmail() {
@@ -33,14 +54,6 @@ public class User {
 	
 	public void setUserName(String userName) {
 		this.userName = userName;
-	}
-
-	public void setHouse(House house) {
-		this.house = house;
-	}
-	
-	public House getHouse() {
-		return house;
 	}
 	
 	public void completeChore(Chore chore) {

@@ -1,31 +1,51 @@
-import java.util.ArrayList;
+package def;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
 public class Chore {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int choreID;
-	private String title;
-	private Boolean isComplete;
+	
+	@Temporal(TemporalType.DATE)
 	private Date dueDate;
 	private String description;
-	private ArrayList<String> comments;
-	private static int nextChoreID = 0;
+	private String title;
+	private String comment;
+	private Boolean isComplete;
 	
 	public Chore(String title) {
-		this.choreID = nextChoreID;
-		nextChoreID++;
 		this.title = title;
-		this.isComplete = false;
 		this.dueDate = null;
+		this.description = null;
+		this.comment = null;
+		this.isComplete = false;
 	}
 	
 	public Chore(String title, String description, Date dueDate) {
-		this.choreID = nextChoreID;
-		nextChoreID++;
 		this.title = title;
 		this.isComplete = false;
 		this.dueDate = dueDate;
 		this.description = description;
+		this.comment = null;
+	}
+	
+	public int getChoreID() {
+		return choreID;
+	}
+
+	public void setChoreID(int choreID) {
+		this.choreID = choreID;
 	}
 	
 	public String getTitle() {
@@ -52,14 +72,10 @@ public class Chore {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public ArrayList<String> getComments() {
-		return comments;
+	public String getComments() {
+		return comment;
 	}
 	public void addComment(String comment) {
-		this.comments.add(comment);
+		this.comment = comment;
 	}
-	public int getChoreID() {
-		return choreID;
-	}
-
 }

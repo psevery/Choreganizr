@@ -1,3 +1,4 @@
+package def;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -28,6 +29,7 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.JTree;
 import javax.swing.JScrollPane;
 import javax.swing.BoxLayout;
+
 
 
 public class Window implements Observer{

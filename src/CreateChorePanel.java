@@ -114,6 +114,7 @@ public class CreateChorePanel extends JPanel {
 					String user = userComboBox.getSelectedItem().toString();
 					Integer timeRemaining = timeSlider.getValue();
 					//House.createCustomChore()	
+					//The callback to add chore to gui should be in the controller not here
 					ViewChoreTabsPanel.getInstance().addNewChorePanel(name, user, timeRemaining.toString(), difficulty.toString());
 					nameTextField.setText("");
 				}

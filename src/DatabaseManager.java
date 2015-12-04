@@ -1,5 +1,9 @@
 import java.util.ArrayList;
 
+import def.Chore;
+import def.House;
+import def.User;
+
 public class DatabaseManager {
 	
 	private static DatabaseManager databaseManager = null;

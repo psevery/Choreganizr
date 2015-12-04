@@ -101,7 +101,7 @@ public class Window implements Observer{
 
 	}
 
-	@Override
+	//@Override This was causing an error
 	public void update(Observable o, Object arg) {
 		
 		

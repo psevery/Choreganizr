@@ -56,7 +56,7 @@ public class CreateChorePanel extends JPanel {
 		gbc_lblChooseDaysRemaining.gridy = 3;
 		add(lblChooseDaysRemaining, gbc_lblChooseDaysRemaining);
 		
-		JSlider timeSlider = new JSlider();
+		final JSlider timeSlider = new JSlider();
 		timeSlider.setSnapToTicks(true);
 		timeSlider.setPaintTicks(true);
 		timeSlider.setPaintLabels(true);
@@ -77,7 +77,7 @@ public class CreateChorePanel extends JPanel {
 		gbc_lblSelectMember.gridy = 5;
 		add(lblSelectMember, gbc_lblSelectMember);
 		
-		JComboBox userComboBox = new JComboBox();
+		final JComboBox userComboBox = new JComboBox();
 		userComboBox.setModel(new DefaultComboBoxModel(new String[] {"Pat", "Anna ", "Ryan", "Tyler"}));
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
@@ -92,7 +92,7 @@ public class CreateChorePanel extends JPanel {
 		gbc_lblDeclareDifficulty.gridy = 6;
 		add(lblDeclareDifficulty, gbc_lblDeclareDifficulty);
 		
-		JSlider slider = new JSlider();
+		final JSlider slider = new JSlider();
 		slider.setValue(3);
 		slider.setSnapToTicks(true);
 		slider.setPaintTicks(true);
@@ -105,7 +105,7 @@ public class CreateChorePanel extends JPanel {
 		difficultySlider.gridy = 6;
 		add(slider, difficultySlider);
 		
-		JButton btnSubmit = new JButton("Submit");
+		final JButton btnSubmit = new JButton("Submit");
 		btnSubmit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

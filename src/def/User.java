@@ -24,6 +24,18 @@ public class User {
 	@ManyToOne(cascade = CascadeType.ALL)
 	protected House house;
 	
+	public User() {
+		this.setUserName("");
+		this.setUserEmail("");
+		this.setHouse(null);
+	}
+	
+	public User(String name, String email, House house) {
+		this.setUserName(name);
+		this.setUserEmail(email);
+		this.setHouse(house);
+	}
+	
 	public House getHouse() {
 		return house;
 	}

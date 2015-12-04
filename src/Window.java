@@ -65,7 +65,7 @@ public class Window implements Observer{
 		frmChoreganizr = new JFrame();
 		frmChoreganizr.setTitle("Choreganizr");
 		frmChoreganizr.getContentPane().setBackground(new Color(0, 191, 255));
-		frmChoreganizr.setBounds(100, 100, 450, 300);
+		frmChoreganizr.setBounds(100, 100, 500, 350);
 		frmChoreganizr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};

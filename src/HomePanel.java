@@ -11,11 +11,12 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
 
 public class HomePanel extends JPanel {
-	private JTextField passwordText;
 	private JTextField groupTextField;
+	private JPasswordField passwordField;
 
 	/**
 	 * Create the panel.
@@ -80,13 +81,13 @@ public class HomePanel extends JPanel {
 		gbc_lblNewLabel.gridy = 7;
 		add(lblNewLabel, gbc_lblNewLabel);
 		
-		passwordText = new JTextField();
-		GridBagConstraints gbc_passwordText = new GridBagConstraints();
-		gbc_passwordText.insets = new Insets(0, 0, 5, 5);
-		gbc_passwordText.gridx = 5;
-		gbc_passwordText.gridy = 8;
-		add(passwordText, gbc_passwordText);
-		passwordText.setColumns(10);
+		passwordField = new JPasswordField();
+		passwordField.setColumns(10);
+		GridBagConstraints gbc_passwordField = new GridBagConstraints();
+		gbc_passwordField.insets = new Insets(0, 0, 5, 5);
+		gbc_passwordField.gridx = 5;
+		gbc_passwordField.gridy = 8;
+		add(passwordField, gbc_passwordField);
 		
 		JButton btnSubmit = new JButton("Submit");
 		GridBagConstraints gbc_btnSubmit = new GridBagConstraints();

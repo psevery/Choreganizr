@@ -19,7 +19,7 @@ public class Chore {
 	
 	@Temporal(TemporalType.DATE)
 	private Date dueDate;
-	private String description;
+	protected String description;
 	private String title;
 	private String comment;
 	private Boolean isComplete;

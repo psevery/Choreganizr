@@ -15,54 +15,58 @@ import org.hibernate.criterion.Restrictions;
 
 public class DBManager {
 	
-//	public static void main(String[] args){
-//		House house = new House();
-//		House house2 = new House();
-//		
-//		User user1 = new User();
-//		user1.setHouse(house);
-//		user1.setUserEmail("EMAIL1");
-//		user1.setUserName("NAME1");
-//		
-//		User user2 = new User();
-//		user2.setHouse(house);
-//		user2.setUserEmail("EMAIL2");
-//		user2.setUserName("NAME2");
-//		
-//		Chore chore = new Chore("TITLE");
-//		Chore chore2 = new Chore("TITLE2");
-//		
-//		(house.getChores()).add(chore);
-//		(house.getChores()).add(chore2);
-//		(house.getUsers()).add(user1);
-//		(house.getUsers()).add(user2);
-//		(house2.getUsers()).add(user2);
-//		
-//		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-//		Session session = sessionFactory.openSession();
-//		session.beginTransaction();
-//		
-//	
-//		session.save(user1);
-//		session.save(user2);
-//		session.save(house);
-//		session.save(house2);
-//		
-////		System.out.println(house.getHouseID());
-//		
-//		session.getTransaction().commit();
-//		
-//		House result = (House) session.get(House.class, house.getHouseID());
-//		
-//		
-//		Chore[] blah = (result.getChores()).toArray(new Chore[0]);
-//		for (Chore c: blah){
-//			System.out.println(c.getTitle());
-//		}
-//		
-//		session.close();
-//		sessionFactory.close();	
-//	}
+	public static void main(String[] args){
+		House house = new House();
+		House house2 = new House();
+		
+		User user1 = new User();
+		user1.setHouse(house);
+		user1.setUserEmail("EMAIL1");
+		user1.setUserName("NAME1");
+		
+		User user2 = new User();
+		user2.setHouse(house);
+		user2.setUserEmail("EMAIL2");
+		user2.setUserName("NAME2");
+		
+		Chore chore = new Chore();
+		chore.setHouse(house);
+		chore.setTitle("TITLE1");
+		Chore chore2 = new Chore();
+		chore2.setTitle("TITLE2");
+		chore2.setHouse(house);
+		
+		(house.getChores()).add(chore);
+		(house.getChores()).add(chore2);
+		(house.getUsers()).add(user1);
+		(house.getUsers()).add(user2);
+		(house2.getUsers()).add(user2);
+		
+		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+//		session.save(chore);
+		session.save(user1);
+		session.save(user2);
+		session.save(house);
+		session.save(house2);
+		
+//		System.out.println(house.getHouseID());
+		
+		session.getTransaction().commit();
+		
+		House result = (House) session.get(House.class, house.getHouseID());
+		
+		
+		Chore[] blah = (result.getChores()).toArray(new Chore[0]);
+		for (Chore c: blah){
+			System.out.println(c.getTitle());
+		}
+		
+		session.close();
+		sessionFactory.close();	
+	}
 	
 	public Long insertHouse(House house){
 		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();

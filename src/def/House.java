@@ -19,7 +19,7 @@ public class House {
 	
 	private int head;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="choreID")
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="house")
 	private Set<Chore> chores = new HashSet<Chore>(0);
 
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="house")

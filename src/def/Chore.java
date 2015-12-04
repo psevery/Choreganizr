@@ -24,21 +24,32 @@ public class Chore {
 	private String comment;
 	private Boolean isComplete;
 	
-	public Chore(String title) {
-		this.title = title;
-		this.dueDate = null;
-		this.description = null;
-		this.comment = null;
-		this.isComplete = false;
+	@ManyToOne(cascade = CascadeType.ALL)
+	protected House house;
+	
+	public House getHouse() {
+		return house;
+	}
+
+	public void setHouse(House house) {
+		this.house = house;
 	}
 	
-	public Chore(String title, String description, Date dueDate) {
-		this.title = title;
-		this.isComplete = false;
-		this.dueDate = dueDate;
-		this.description = description;
-		this.comment = null;
-	}
+//	public Chore(String title) {
+//		this.title = title;
+//		this.dueDate = null;
+//		this.description = null;
+//		this.comment = null;
+//		this.isComplete = false;
+//	}
+//	
+//	public Chore(String title, String description, Date dueDate) {
+//		this.title = title;
+//		this.isComplete = false;
+//		this.dueDate = dueDate;
+//		this.description = description;
+//		this.comment = null;
+//	}
 	
 	public int getChoreID() {
 		return choreID;

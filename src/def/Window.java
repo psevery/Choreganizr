@@ -24,7 +24,7 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
-import net.miginfocom.swing.MigLayout;
+//import net.miginfocom.swing.MigLayout;
 
 import javax.swing.JTree;
 import javax.swing.JScrollPane;
@@ -32,7 +32,7 @@ import javax.swing.BoxLayout;
 
 
 
-public class Window implements Observer{
+public class Window {
 
 	private JFrame frmChoreganizr;
 	
@@ -101,11 +101,6 @@ public class Window implements Observer{
 
 	}
 
-	@Override
-	public void update(Observable o, Object arg) {
-		
-		
-	}
 	public void redraw(){
 		frmChoreganizr.revalidate(); 
 		frmChoreganizr.repaint(); 

@@ -27,6 +27,17 @@ public class Chore {
 	@ManyToOne(cascade = CascadeType.ALL)
 	protected House house;
 	
+	@ManyToOne(cascade = CascadeType.ALL)
+	protected User user;
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 	public House getHouse() {
 		return house;
 	}

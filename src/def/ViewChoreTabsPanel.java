@@ -17,13 +17,13 @@ public class ViewChoreTabsPanel extends JTabbedPane {
 	private ViewChoreTabsPanel(){
 		this.setBackground(new Color(255, 250, 250));
 		this.setTabPlacement(BOTTOM);
-		JPanel garbagePanel = new ViewChorePanel("Garbage", "Pat", "5", "1", "False");
+		JPanel garbagePanel = new ViewChorePanel("Garbage","Take trash out", "kitchen" , "5", "Pat", "1", "False");
 		this.addTab("Garbage", null, garbagePanel, null);
 		
-		JPanel dishesPanel = new ViewChorePanel("Dishes", "Tyler", "3","1", "False");
+		JPanel dishesPanel = new ViewChorePanel("Dishes", "", "kitchen", "3", "Tyler","1", "False");
 		this.addTab("Dishes", null, dishesPanel, null);
 		
-		JPanel vaccumPanel = new ViewChorePanel("Vaccum", "Ryan", "4", "1", "True");
+		JPanel vaccumPanel = new ViewChorePanel("Vaccum","Use machine", "general", "4", "Ryan", "1", "True");
 		vaccumPanel.setBackground(new Color(0, 255, 0));
 		this.addTab("Vaccum", null, vaccumPanel, null);
 	}
@@ -33,11 +33,15 @@ public class ViewChoreTabsPanel extends JTabbedPane {
 	}
 	
 	
-	public synchronized void addNewChorePanel(String name, String member, String time ,String difficulty){
-		 JPanel panel = new ViewChorePanel(name, member,time, difficulty, "False");
+	public synchronized void addNewChorePanel(String name, String desc, String type,  String member, String time ,String difficulty){
+		 JPanel panel = new ViewChorePanel(name, desc, type, member, time, difficulty, "False");
 		 this.addTab(name, null, panel, null);
 		 this.repaint();
 	}
 	
+	public void redrawChores(){
+		
+	}
+		
 	//Should do a for loop getting each chore from house and call addNewChorePanel(). 
 }

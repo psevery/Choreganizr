@@ -101,6 +101,12 @@ public class Window {
 
 	}
 
+
+	//@Override This was causing build error
+	public void update(Observable o, Object arg) {
+		
+		
+	}
 	public void redraw(){
 		frmChoreganizr.revalidate(); 
 		frmChoreganizr.repaint(); 

@@ -19,13 +19,24 @@ public class Chore {
 	
 	@Temporal(TemporalType.DATE)
 	private Date dueDate;
-	private String description;
+	protected String description;
 	private String title;
 	private String comment;
 	private Boolean isComplete;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	protected House house;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	protected User user;
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 	
 	public House getHouse() {
 		return house;

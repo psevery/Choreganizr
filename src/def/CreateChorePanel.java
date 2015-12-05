@@ -21,6 +21,8 @@ import java.awt.event.MouseEvent;
 
 public class CreateChorePanel extends JPanel {
 	private JTextField nameTextField;
+	private JTextField descriptionField;
+	private GridBagConstraints gbc_descriptionField;
 
 	/**
 	 * Create the panel.
@@ -28,35 +30,69 @@ public class CreateChorePanel extends JPanel {
 	public CreateChorePanel() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{10, 162, 9, 0, 208, 9, 0};
-		gridBagLayout.rowHeights = new int[]{0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
+		
+		
 		
 		JLabel lblEnterChoreName = new JLabel("Enter Chore Name:");
 		GridBagConstraints gbc_lblEnterChoreName = new GridBagConstraints();
 		gbc_lblEnterChoreName.insets = new Insets(0, 0, 5, 5);
 		gbc_lblEnterChoreName.gridx = 1;
-		gbc_lblEnterChoreName.gridy = 2;
+		gbc_lblEnterChoreName.gridy = 5;
 		add(lblEnterChoreName, gbc_lblEnterChoreName);
 		
 		nameTextField = new JTextField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.gridx = 4;
-		gbc_textField.gridy = 2;
+		gbc_textField.gridy = 5;
 		add(nameTextField, gbc_textField);
 		nameTextField.setColumns(10);
 		
+		JLabel lblEnterDescription = new JLabel("Enter Description");
+		GridBagConstraints gbc_lblEnterDescription = new GridBagConstraints();
+		gbc_lblEnterDescription.insets = new Insets(0, 0, 5, 5);
+		gbc_lblEnterDescription.gridx = 1;
+		gbc_lblEnterDescription.gridy = 6;
+		add(lblEnterDescription, gbc_lblEnterDescription);
+		
+		descriptionField = new JTextField();
+		GridBagConstraints dfield;
+		gbc_descriptionField = new GridBagConstraints();
+		gbc_descriptionField.insets = new Insets(0, 0, 5, 5);
+		gbc_descriptionField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_descriptionField.gridx = 4;
+		gbc_descriptionField.gridy = 6;
+		add(descriptionField, gbc_descriptionField);
+		descriptionField.setColumns(10);
+		
+		JLabel lblChooseType = new JLabel("Choose Type");
+		GridBagConstraints gbc_lblChooseType = new GridBagConstraints();
+		gbc_lblChooseType.insets = new Insets(0, 0, 5, 5);
+		gbc_lblChooseType.gridx = 1;
+		gbc_lblChooseType.gridy = 7;
+		add(lblChooseType, gbc_lblChooseType);
+		
+		final JComboBox typeDropdown = new JComboBox();
+		typeDropdown.setModel(new DefaultComboBoxModel(new String[] {"Kitchen", "Yard", "Bathroom", "General"}));
+		GridBagConstraints gbc_typeDropdown = new GridBagConstraints();
+		gbc_typeDropdown.insets = new Insets(0, 0, 5, 5);
+		gbc_typeDropdown.gridx = 4;
+		gbc_typeDropdown.gridy = 7;
+		add(typeDropdown, gbc_typeDropdown);
+		
 		JLabel lblChooseDaysRemaining = new JLabel("Choose Days Remaining:");
 		GridBagConstraints gbc_lblChooseDaysRemaining = new GridBagConstraints();
-		gbc_lblChooseDaysRemaining.gridheight = 2;
+		gbc_lblChooseDaysRemaining.gridheight = 3;
 		gbc_lblChooseDaysRemaining.insets = new Insets(0, 0, 5, 5);
 		gbc_lblChooseDaysRemaining.gridx = 1;
-		gbc_lblChooseDaysRemaining.gridy = 3;
+		gbc_lblChooseDaysRemaining.gridy = 8;
 		add(lblChooseDaysRemaining, gbc_lblChooseDaysRemaining);
 		
-		JSlider timeSlider = new JSlider();
+		final JSlider timeSlider = new JSlider();
 		timeSlider.setSnapToTicks(true);
 		timeSlider.setPaintTicks(true);
 		timeSlider.setPaintLabels(true);
@@ -64,35 +100,35 @@ public class CreateChorePanel extends JPanel {
 		timeSlider.setMajorTickSpacing(1);
 		timeSlider.setValue(5);
 		GridBagConstraints tSlider = new GridBagConstraints();
-		tSlider.gridheight = 2;
+		tSlider.gridheight = 3;
 		tSlider.insets = new Insets(0, 0, 5, 5);
 		tSlider.gridx = 4;
-		tSlider.gridy = 3;
+		tSlider.gridy = 8;
 		add(timeSlider, tSlider);
 		
 		JLabel lblSelectMember = new JLabel("Select Member:");
 		GridBagConstraints gbc_lblSelectMember = new GridBagConstraints();
 		gbc_lblSelectMember.insets = new Insets(0, 0, 5, 5);
 		gbc_lblSelectMember.gridx = 1;
-		gbc_lblSelectMember.gridy = 5;
+		gbc_lblSelectMember.gridy = 11;
 		add(lblSelectMember, gbc_lblSelectMember);
 		
-		JComboBox userComboBox = new JComboBox();
+		final JComboBox userComboBox = new JComboBox();
 		userComboBox.setModel(new DefaultComboBoxModel(new String[] {"Pat", "Anna ", "Ryan", "Tyler"}));
-		GridBagConstraints gbc_comboBox = new GridBagConstraints();
-		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBox.gridx = 4;
-		gbc_comboBox.gridy = 5;
-		add(userComboBox, gbc_comboBox);
+		GridBagConstraints userDropdown = new GridBagConstraints();
+		userDropdown.insets = new Insets(0, 0, 5, 5);
+		userDropdown.gridx = 4;
+		userDropdown.gridy = 11;
+		add(userComboBox, userDropdown);
 		
 		JLabel lblDeclareDifficulty = new JLabel("Declare Difficulty:");
 		GridBagConstraints gbc_lblDeclareDifficulty = new GridBagConstraints();
 		gbc_lblDeclareDifficulty.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDeclareDifficulty.gridx = 1;
-		gbc_lblDeclareDifficulty.gridy = 6;
+		gbc_lblDeclareDifficulty.gridy = 12;
 		add(lblDeclareDifficulty, gbc_lblDeclareDifficulty);
 		
-		JSlider slider = new JSlider();
+		final JSlider slider = new JSlider();
 		slider.setValue(3);
 		slider.setSnapToTicks(true);
 		slider.setPaintTicks(true);
@@ -102,10 +138,10 @@ public class CreateChorePanel extends JPanel {
 		GridBagConstraints difficultySlider = new GridBagConstraints();
 		difficultySlider.insets = new Insets(0, 0, 5, 5);
 		difficultySlider.gridx = 4;
-		difficultySlider.gridy = 6;
+		difficultySlider.gridy = 12;
 		add(slider, difficultySlider);
 		
-		JButton btnSubmit = new JButton("Submit");
+		final JButton btnSubmit = new JButton("Submit");
 		btnSubmit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -113,11 +149,14 @@ public class CreateChorePanel extends JPanel {
 					Integer difficulty = slider.getValue();
 					String name = nameTextField.getText();
 					String user = userComboBox.getSelectedItem().toString();
+					String desc = descriptionField.getText();
+					String type = typeDropdown.getSelectedItem().toString();
 					Integer timeRemaining = timeSlider.getValue();
 					//House.createCustomChore()	
 					//The callback to add chore to gui should be in the controller not here
-					ViewChoreTabsPanel.getInstance().addNewChorePanel(name, user, timeRemaining.toString(), difficulty.toString());
+					ViewChoreTabsPanel.getInstance().addNewChorePanel(name, desc, type, timeRemaining.toString(), user, difficulty.toString());
 					nameTextField.setText("");
+					descriptionField.setText("");
 				}
 				catch(Exception ex ){
 					//not all values filled out so do something
@@ -128,7 +167,7 @@ public class CreateChorePanel extends JPanel {
 		GridBagConstraints gbc_btnSubmit = new GridBagConstraints();
 		gbc_btnSubmit.gridwidth = 10;
 		gbc_btnSubmit.gridx = 0;
-		gbc_btnSubmit.gridy = 9;
+		gbc_btnSubmit.gridy = 16;
 		add(btnSubmit, gbc_btnSubmit);
 
 	}

@@ -17,6 +17,14 @@ public class ViewChoreTabsPanel extends JTabbedPane {
 	private ViewChoreTabsPanel(){
 		this.setBackground(new Color(255, 250, 250));
 		this.setTabPlacement(BOTTOM);
+		
+	}
+	
+	public synchronized static ViewChoreTabsPanel getInstance() {
+	    return INSTANCE;
+	}
+	
+	public synchronized void displayDefaults(){
 		JPanel garbagePanel = new ViewChorePanel("Garbage","Take trash out", "kitchen" , "5", "Pat", "1", "False");
 		this.addTab("Garbage", null, garbagePanel, null);
 		
@@ -27,11 +35,6 @@ public class ViewChoreTabsPanel extends JTabbedPane {
 		vaccumPanel.setBackground(new Color(0, 255, 0));
 		this.addTab("Vaccum", null, vaccumPanel, null);
 	}
-	
-	public synchronized static ViewChoreTabsPanel getInstance() {
-	    return INSTANCE;
-	}
-	
 	
 	public synchronized void addNewChorePanel(String name, String desc, String type,  String member, String time ,String difficulty){
 		 JPanel panel = new ViewChorePanel(name, desc, type, member, time, difficulty, "False");

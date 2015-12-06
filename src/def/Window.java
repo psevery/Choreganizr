@@ -95,18 +95,12 @@ public class Window {
 		JPanel panelAdd = new CreateChorePanel();
 		tabbedPane.addTab("Add Chores", null, panelAdd, null);
 		//to manage chores (mark completed)
-		JPanel panelManage = new JPanel();
+		JTabbedPane panelManage = ManageChoreTabsPanel.getInstance();
 		tabbedPane.addTab("Manage Chores", null, panelManage, null);
 		
 
 	}
 
-
-	//@Override This was causing build error
-	public void update(Observable o, Object arg) {
-		
-		
-	}
 	public void redraw(){
 		frmChoreganizr.revalidate(); 
 		frmChoreganizr.repaint(); 

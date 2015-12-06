@@ -1,18 +1,30 @@
 package def;
 import javax.swing.JPanel;
+
 import java.awt.GridBagLayout;
+
 import javax.swing.JLabel;
+
 import java.awt.GridBagConstraints;
+
 import javax.swing.JComboBox;
+
 import java.awt.Insets;
+
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JPasswordField;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class HomePanel extends JPanel {
@@ -47,12 +59,7 @@ public class HomePanel extends JPanel {
 		add(lblEnterGroupName, gbc_lblEnterGroupName);
 		
 		groupTextField = new JTextField();
-		groupTextField.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String groupName = groupTextField.getText();
-				//TODO: databasemanager gets members of group with that name, sends them back here and gui populates dropdown with names
-			}
-		});
+		
 		
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
@@ -68,12 +75,20 @@ public class HomePanel extends JPanel {
 		gbc_lblWhoAreYou.gridy = 5;
 		add(lblWhoAreYou, gbc_lblWhoAreYou);
 		
-		JComboBox membersDropdown = new JComboBox();
+		final JComboBox membersDropdown = new JComboBox();
 		GridBagConstraints gbc_membersDropdown = new GridBagConstraints();
 		gbc_membersDropdown.insets = new Insets(0, 0, 5, 5);
 		gbc_membersDropdown.gridx = 5;
 		gbc_membersDropdown.gridy = 6;
 		add(membersDropdown, gbc_membersDropdown);
+		
+		groupTextField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String groupName = groupTextField.getText();
+				membersDropdown.setModel(new DefaultComboBoxModel(new String[] {"Anna", "Pat", "Tyler", "Ryan"}));
+				//databaseManager.getUsers(groupName);
+			}
+		});
 		
 		JLabel lblNewLabel = new JLabel("Password:");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
@@ -82,7 +97,7 @@ public class HomePanel extends JPanel {
 		gbc_lblNewLabel.gridy = 7;
 		add(lblNewLabel, gbc_lblNewLabel);
 		
-		passwordField = new JPasswordField();
+		final JPasswordField passwordField  = new JPasswordField();
 		passwordField.setColumns(10);
 		GridBagConstraints gbc_passwordField = new GridBagConstraints();
 		gbc_passwordField.insets = new Insets(0, 0, 5, 5);
@@ -91,11 +106,21 @@ public class HomePanel extends JPanel {
 		add(passwordField, gbc_passwordField);
 		
 		JButton btnSubmit = new JButton("Submit");
+		btnSubmit.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//databaseManager.getInstance().validatePassword(passwordField.getText());
+				passwordField.setText("");
+				groupTextField.setText("");	
+				ViewChoreTabsPanel.getInstance().displayDefaults();
+			}
+		});
 		GridBagConstraints gbc_btnSubmit = new GridBagConstraints();
 		gbc_btnSubmit.insets = new Insets(0, 0, 0, 5);
 		gbc_btnSubmit.gridx = 5;
 		gbc_btnSubmit.gridy = 9;
 		add(btnSubmit, gbc_btnSubmit);
+		
 
 	}
 

@@ -21,7 +21,6 @@ public class Chore {
 	private Date dueDate;
 	protected String description;
 	private String title;
-	private String comment;
 	private int difficulty;
 	private Boolean isComplete;
 	
@@ -55,7 +54,6 @@ public class Chore {
 //		this.title = title;
 //		this.dueDate = null;
 //		this.description = null;
-//		this.comment = null;
 //		this.isComplete = false;
 //	}
 //	
@@ -64,7 +62,6 @@ public class Chore {
 //		this.isComplete = false;
 //		this.dueDate = dueDate;
 //		this.description = description;
-//		this.comment = null;
 //	}
 	
 	public Chore() {
@@ -78,7 +75,6 @@ public class Chore {
 		this.dueDate = dueDate;
 		this.description = description;
 		this.difficulty = difficulty;
-		this.comment = null;
 	}
 	
 	
@@ -119,11 +115,5 @@ public class Chore {
 	}
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	public String getComments() {
-		return comment;
-	}
-	public void addComment(String comment) {
-		this.comment = comment;
 	}
 }

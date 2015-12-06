@@ -24,8 +24,8 @@ public class ViewChoreTabsPanel extends JTabbedPane implements Observer {
 	}
 	
 	public synchronized void displayDefaults(){
-		JPanel garbagePanel = new ViewChorePanel("Garbage","Take trash out", "kitchen" , "5", "Pat", "1", "False");
-		this.addTab("Garbage", null, garbagePanel, null);
+		//JPanel garbagePanel = new ViewChorePanel("Garbage","Take trash out", "kitchen" , "5", "Pat", "1", "False");
+		//this.addTab("Garbage", null, garbagePanel, null);
 		
 		//JPanel garbagePanel = new ViewChorePanel("Garbage","Take trash out", "kitchen" , "5", "Pat", "1", "False");
 		//this.addTab("Garbage", null, garbagePanel, null);
@@ -49,20 +49,17 @@ public class ViewChoreTabsPanel extends JTabbedPane implements Observer {
 	}
 
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		if (arg.getClass().equals(Chore.class)) {
-			Chore chore = (Chore)arg;
-			String title = chore.getTitle();
-			String desc = chore.getDescription();
-			String type = chore.getType();
-			String member = chore.getUser().getUserName();
-			String time = chore.getDueDate().toString();
-			String diff = Integer.toString(chore.getDifficulty());
-			addNewChorePanel(title, desc, type, member, time, diff);
-		}
-		else {
-			System.out.println("ViewChoreTabsPanel was updated, but not with a Chore object");
-		}
+		
+		Chore chore = (Chore)arg;
+		String title = chore.getTitle();
+		String desc = chore.getDescription();
+		String type = chore.getType();
+		String member = chore.getUserString();
+		String time = chore.getDueDate().toString();
+		String diff = String.valueOf(chore.getDifficulty());
+		
+		addNewChorePanel(title, desc, type, member, time, diff);
+		
 	}
 		
 	//Should do a for loop getting each chore from house and call addNewChorePanel().

@@ -59,6 +59,14 @@ public class Window {
 		initialize();
 	}
 
+	private House house;
+	public House getHouse() {
+		return house;
+	}
+	public void setHouse(House house) {
+		this.house = house;
+	}
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -86,13 +94,13 @@ public class Window {
 		
 // these panels are opened by the main tabs at top (each tab is composed of a panel)
 		//welcome and login panel
-		JPanel panelHome = new HomePanel();
+		JPanel panelHome = new HomePanel(this);
 		tabbedPane.addTab("Home", null, panelHome, null);
 		//the view chores tab panel this panel is composed of ViewChorePanel tabs.
 		JTabbedPane panelView = ViewChoreTabsPanel.getInstance();
 		tabbedPane.addTab("View Chores", null, panelView, null);
 		//to create a custom chore
-		JPanel panelAdd = new CreateChorePanel();
+		JPanel panelAdd = new CreateChorePanel(this);
 		tabbedPane.addTab("Add Chores", null, panelAdd, null);
 		//to manage chores (mark completed)
 		JTabbedPane panelManage = ManageChoreTabsPanel.getInstance();

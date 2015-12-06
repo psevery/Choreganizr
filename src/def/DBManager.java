@@ -150,8 +150,8 @@ public class DBManager {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		
-		assert chore.getHouse() != null;
-		assert chore.getUser() != null;
+		//assert chore.getHouse() != null;
+		//assert chore.getUser() != null;
 		
 		Long genID = (Long) session.save(chore);
 		
@@ -165,8 +165,8 @@ public class DBManager {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		
-		((chore.getHouse()).getChores()).remove(chore);
-		((chore.getUser()).getChores()).remove(chore);
+		//((chore.getHouse()).getChores()).remove(chore);
+		//((chore.getUser()).getChores()).remove(chore);
 		session.delete(chore);
 		
 		session.close();

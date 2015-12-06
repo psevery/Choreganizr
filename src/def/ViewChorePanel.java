@@ -17,7 +17,7 @@ public class ViewChorePanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public ViewChorePanel(String choreName, String description, String type, String dueIn, String memberName, String difficulty, String completed) {
+	public ViewChorePanel(String choreName, String description, String type, String memberName, String dueDate, String difficulty, String completed) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 4, 6, 1, 0, 1, 3, 7, 2, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
@@ -70,14 +70,14 @@ public class ViewChorePanel extends JPanel {
 		gbc_lblTyp.gridy = 2;
 		add(lblTyp, gbc_lblTyp);
 		
-		JLabel lblDueIn = new JLabel("Due In:");
+		JLabel lblDueIn = new JLabel("Due Date:");
 		GridBagConstraints gbc_lblDueIn = new GridBagConstraints();
 		gbc_lblDueIn.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDueIn.gridx = 2;
 		gbc_lblDueIn.gridy = 3;
 		add(lblDueIn, gbc_lblDueIn);
 		
-		JLabel lblNumberOfDays = new JLabel(dueIn + " days");
+		JLabel lblNumberOfDays = new JLabel(dueDate);
 		GridBagConstraints gbc_lblNumberOfDays = new GridBagConstraints();
 		gbc_lblNumberOfDays.fill = GridBagConstraints.BOTH;
 		gbc_lblNumberOfDays.insets = new Insets(0, 0, 5, 0);

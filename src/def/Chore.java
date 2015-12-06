@@ -30,7 +30,9 @@ public class Chore {
 	@ManyToOne(cascade = CascadeType.ALL)
 	protected User user;
 	
-	public static String getType() {
+	protected String userString;
+	
+	public String getType() {
 		return "Chore";
 	}
 	
@@ -41,7 +43,7 @@ public class Chore {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+	/*
 	public House getHouse() {
 		return house;
 	}
@@ -49,7 +51,7 @@ public class Chore {
 	public void setHouse(House house) {
 		this.house = house;
 	}
-	
+	*/
 //	public Chore(String title) {
 //		this.title = title;
 //		this.dueDate = null;
@@ -64,6 +66,14 @@ public class Chore {
 //		this.description = description;
 //	}
 	
+	public String getUserString() {
+		return userString;
+	}
+
+	public void setUserString(String userString) {
+		this.userString = userString;
+	}
+	
 	public Chore() {
 		
 	}
@@ -72,6 +82,7 @@ public class Chore {
 		//name, desc, timeRemaining, user, difficulty
 		this.title = title;
 		this.isComplete = false;
+		this.userString = user;
 		this.dueDate = dueDate;
 		this.description = description;
 		this.difficulty = difficulty;
@@ -96,7 +107,7 @@ public class Chore {
 		return difficulty;
 	}
 	public void setDifficulty(int diff) {
-		
+		this.difficulty = diff;
 	}
 	public Boolean getIsComplete() {
 		return isComplete;

@@ -28,6 +28,9 @@ public class House extends Observable {
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="house")
 	private Set<User> users = new HashSet<User>(0);
 	
+	public House() {
+		this.addObserver(ViewChoreTabsPanel.getInstance());
+	}
 	public House(User head) {
 		setHead(head);
 	}
@@ -87,29 +90,26 @@ public class House extends Observable {
 		this.chores = chores;
 	}
 
-	public static void createCustomChore(String name, String desc, String type, int timeRemaining, String user,
+	public void createCustomChore(String name, String desc, String type, int timeRemaining, String user,
 			int difficulty) {
-		if (type == Chore.getType()) {
-			
-			// Add timeRemaining to today's date
-			Date today = new Date();
-			Calendar cal = Calendar.getInstance();
-	        cal.setTime(today);
-	        cal.add(Calendar.DATE, timeRemaining);
-	        
-	        ChoreFactory choreFactory = new ChoreFactory();
-	        Chore newChore = choreFactory.getChore("type");
-	        
-	        newChore.setHouse(house);
-	        newChore.setUser(user);
-	        newChore.setTitle(title);
-	        newChore.setDescription(description);
-	        
-	        Chore newChore = new Chore(name, desc, cal.getTime(), user, difficulty);
-			addChore(newChore);
-		}
-		
-		// TODO Auto-generated method stub
+
+		// Add timeRemaining to today's date
+		Date today = new Date();
+		Calendar cal = Calendar.getInstance();
+        cal.setTime(today);
+        cal.add(Calendar.DATE, timeRemaining);
+        
+        // Create a new Chore of the appropriate type
+        ChoreFactory choreFactory = new ChoreFactory();
+        Chore newChore = choreFactory.getChore(type);
+        // and set its attributes
+        newChore.setTitle(name);
+        newChore.setDescription(desc);
+        newChore.setDueDate(cal.getTime());
+        newChore.setUserString(user);
+        newChore.setDifficulty(difficulty);
+        
+		addChore(newChore);
 		
 	}
 }

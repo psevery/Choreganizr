@@ -34,7 +34,7 @@ public class HomePanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public HomePanel() {
+	public HomePanel(final Window window) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{30, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0};
@@ -113,6 +113,9 @@ public class HomePanel extends JPanel {
 				passwordField.setText("");
 				groupTextField.setText("");	
 				ViewChoreTabsPanel.getInstance().displayDefaults();
+				
+				House newHouse = new House();
+				window.setHouse(newHouse);
 			}
 		});
 		GridBagConstraints gbc_btnSubmit = new GridBagConstraints();

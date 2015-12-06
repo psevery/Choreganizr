@@ -32,9 +32,5 @@ public class ManageChoreTabsPanel extends JTabbedPane {
 		 this.addTab(name, null, panel, null);
 		 this.repaint();
 	}
-	
-	public void redrawChores(){
-		
-	}
 		
 }

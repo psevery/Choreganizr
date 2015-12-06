@@ -42,9 +42,6 @@ public class ViewChoreTabsPanel extends JTabbedPane {
 		 this.repaint();
 	}
 	
-	public void redrawChores(){
-		
-	}
-		
+	
 	//Should do a for loop getting each chore from house and call addNewChorePanel(). 
 }

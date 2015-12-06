@@ -1,5 +1,7 @@
 package def;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Observable;
 import java.util.Set;
@@ -83,5 +85,31 @@ public class House extends Observable {
 
 	public void setChores(Set<Chore> chores) {
 		this.chores = chores;
+	}
+
+	public static void createCustomChore(String name, String desc, String type, int timeRemaining, String user,
+			int difficulty) {
+		if (type == Chore.getType()) {
+			
+			// Add timeRemaining to today's date
+			Date today = new Date();
+			Calendar cal = Calendar.getInstance();
+	        cal.setTime(today);
+	        cal.add(Calendar.DATE, timeRemaining);
+	        
+	        ChoreFactory choreFactory = new ChoreFactory();
+	        Chore newChore = choreFactory.getChore("type");
+	        
+	        newChore.setHouse(house);
+	        newChore.setUser(user);
+	        newChore.setTitle(title);
+	        newChore.setDescription(description);
+	        
+	        Chore newChore = new Chore(name, desc, cal.getTime(), user, difficulty);
+			addChore(newChore);
+		}
+		
+		// TODO Auto-generated method stub
+		
 	}
 }

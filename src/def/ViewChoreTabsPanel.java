@@ -1,5 +1,6 @@
 package def;
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -9,15 +10,13 @@ import java.awt.GridBagLayout;
 
 //holds all chores for gui 
 //singleton because we only want and need one instance of this tabbed pane. 
-public class ViewChoreTabsPanel extends JTabbedPane {
+public class ViewChoreTabsPanel extends JTabbedPane implements Observer {
 	//private JTabbedPane paneView;
 	private static final ViewChoreTabsPanel INSTANCE = new ViewChoreTabsPanel();
-
 	
 	private ViewChoreTabsPanel(){
 		this.setBackground(new Color(255, 250, 250));
 		this.setTabPlacement(BOTTOM);
-		
 	}
 	
 	public synchronized static ViewChoreTabsPanel getInstance() {
@@ -28,12 +27,15 @@ public class ViewChoreTabsPanel extends JTabbedPane {
 		JPanel garbagePanel = new ViewChorePanel("Garbage","Take trash out", "kitchen" , "5", "Pat", "1", "False");
 		this.addTab("Garbage", null, garbagePanel, null);
 		
-		JPanel dishesPanel = new ViewChorePanel("Dishes", "", "kitchen", "3", "Tyler","1", "False");
-		this.addTab("Dishes", null, dishesPanel, null);
+		//JPanel garbagePanel = new ViewChorePanel("Garbage","Take trash out", "kitchen" , "5", "Pat", "1", "False");
+		//this.addTab("Garbage", null, garbagePanel, null);
 		
-		JPanel vaccumPanel = new ViewChorePanel("Vaccum","Use machine", "general", "4", "Ryan", "1", "True");
-		vaccumPanel.setBackground(new Color(0, 255, 0));
-		this.addTab("Vaccum", null, vaccumPanel, null);
+		//JPanel dishesPanel = new ViewChorePanel("Dishes", "", "kitchen", "3", "Tyler","1", "False");
+		//this.addTab("Dishes", null, dishesPanel, null);
+		
+		//JPanel vaccumPanel = new ViewChorePanel("Vaccum","Use machine", "general", "4", "Ryan", "1", "True");
+		//vaccumPanel.setBackground(new Color(0, 255, 0));
+		//this.addTab("Vaccum", null, vaccumPanel, null);
 	}
 	
 	public synchronized void addNewChorePanel(String name, String desc, String type,  String member, String time ,String difficulty){
@@ -45,6 +47,24 @@ public class ViewChoreTabsPanel extends JTabbedPane {
 	public void redrawChores(){
 		
 	}
+
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		if (arg.getClass().equals(Chore.class)) {
+			Chore chore = (Chore)arg;
+			String title = chore.getTitle();
+			String desc = chore.getDescription();
+			String type = chore.getType();
+			String member = chore.getUser().getUserName();
+			String time = chore.getDueDate().toString();
+			String diff = Integer.toString(chore.getDifficulty());
+			addNewChorePanel(title, desc, type, member, time, diff);
+		}
+		else {
+			System.out.println("ViewChoreTabsPanel was updated, but not with a Chore object");
+		}
+	}
 		
-	//Should do a for loop getting each chore from house and call addNewChorePanel(). 
+	//Should do a for loop getting each chore from house and call addNewChorePanel().
+	
 }

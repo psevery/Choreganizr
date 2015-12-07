@@ -113,7 +113,7 @@ public class HomePanel extends JPanel {
 				passwordField.setText("");
 				groupTextField.setText("");	
 				ViewChoreTabsPanel.getInstance().displayDefaults();
-				
+				ManageChoreTabsPanel.getInstance().displayDefaults();
 				House newHouse = new House();
 				window.setHouse(newHouse);
 			}

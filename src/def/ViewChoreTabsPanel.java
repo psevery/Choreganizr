@@ -24,18 +24,15 @@ public class ViewChoreTabsPanel extends JTabbedPane implements Observer {
 	}
 	
 	public synchronized void displayDefaults(){
-		//JPanel garbagePanel = new ViewChorePanel("Garbage","Take trash out", "kitchen" , "5", "Pat", "1", "False");
-		//this.addTab("Garbage", null, garbagePanel, null);
+		JPanel garbagePanel = new ViewChorePanel("Garbage","Take trash out", "kitchen" , "5", "Pat", "1", "False");
+		this.addTab("Garbage", null, garbagePanel, null);
 		
-		//JPanel garbagePanel = new ViewChorePanel("Garbage","Take trash out", "kitchen" , "5", "Pat", "1", "False");
-		//this.addTab("Garbage", null, garbagePanel, null);
+		JPanel dishesPanel = new ViewChorePanel("Dishes", "", "kitchen", "3", "Tyler","1", "False");
+		this.addTab("Dishes", null, dishesPanel, null);
 		
-		//JPanel dishesPanel = new ViewChorePanel("Dishes", "", "kitchen", "3", "Tyler","1", "False");
-		//this.addTab("Dishes", null, dishesPanel, null);
-		
-		//JPanel vaccumPanel = new ViewChorePanel("Vaccum","Use machine", "general", "4", "Ryan", "1", "True");
-		//vaccumPanel.setBackground(new Color(0, 255, 0));
-		//this.addTab("Vaccum", null, vaccumPanel, null);
+		JPanel vaccumPanel = new ViewChorePanel("Vaccum","Use machine", "general", "4", "Ryan", "1", "True");
+		vaccumPanel.setBackground(new Color(0, 255, 0));
+		this.addTab("Vaccum", null, vaccumPanel, null);
 	}
 	
 	public synchronized void addNewChorePanel(String name, String desc, String type,  String member, String time ,String difficulty){

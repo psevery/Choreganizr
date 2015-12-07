@@ -21,7 +21,7 @@ public class Chore {
 	private Date dueDate;
 	protected String description;
 	private String title;
-	private String comment;
+	private int difficulty;
 	private Boolean isComplete;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -30,6 +30,12 @@ public class Chore {
 	@ManyToOne(cascade = CascadeType.ALL)
 	protected User user;
 	
+	protected String userString;
+	
+	public String getType() {
+		return "Chore";
+	}
+	
 	public User getUser() {
 		return user;
 	}
@@ -37,7 +43,7 @@ public class Chore {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+	/*
 	public House getHouse() {
 		return house;
 	}
@@ -45,12 +51,11 @@ public class Chore {
 	public void setHouse(House house) {
 		this.house = house;
 	}
-	
+	*/
 //	public Chore(String title) {
 //		this.title = title;
 //		this.dueDate = null;
 //		this.description = null;
-//		this.comment = null;
 //		this.isComplete = false;
 //	}
 //	
@@ -59,8 +64,30 @@ public class Chore {
 //		this.isComplete = false;
 //		this.dueDate = dueDate;
 //		this.description = description;
-//		this.comment = null;
 //	}
+	
+	public String getUserString() {
+		return userString;
+	}
+
+	public void setUserString(String userString) {
+		this.userString = userString;
+	}
+	
+	public Chore() {
+		
+	}
+	
+	public Chore(String title, String description, Date dueDate, String user, int difficulty) {
+		//name, desc, timeRemaining, user, difficulty
+		this.title = title;
+		this.isComplete = false;
+		this.userString = user;
+		this.dueDate = dueDate;
+		this.description = description;
+		this.difficulty = difficulty;
+	}
+	
 	
 	public int getChoreID() {
 		return choreID;
@@ -75,6 +102,12 @@ public class Chore {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public int getDifficulty() {
+		return difficulty;
+	}
+	public void setDifficulty(int diff) {
+		this.difficulty = diff;
 	}
 	public Boolean getIsComplete() {
 		return isComplete;
@@ -93,11 +126,5 @@ public class Chore {
 	}
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	public String getComments() {
-		return comment;
-	}
-	public void addComment(String comment) {
-		this.comment = comment;
 	}
 }

@@ -85,8 +85,4 @@ public class User {
 	public void completeChore(Chore chore) {
 		chore.setIsComplete(true);
 	}
-	
-	public void commentOnChore(Chore chore, String comment) {
-		chore.addComment(comment);
-	}
 }

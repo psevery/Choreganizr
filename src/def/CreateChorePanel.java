@@ -28,7 +28,7 @@ public class CreateChorePanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public CreateChorePanel() {
+	public CreateChorePanel(final Window window) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{10, 162, 9, 0, 208, 9, 0};
 		gridBagLayout.rowHeights = new int[]{0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -163,6 +163,7 @@ public class CreateChorePanel extends JPanel {
 		slider.setPaintLabels(true);
 		slider.setMaximum(5);
 		slider.setMajorTickSpacing(1);
+		slider.setValue(3);
 		GridBagConstraints difficultySlider = new GridBagConstraints();
 		difficultySlider.insets = new Insets(0, 0, 5, 5);
 		difficultySlider.gridx = 4;
@@ -174,15 +175,17 @@ public class CreateChorePanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try{
-					Integer difficulty = slider.getValue();
+					int difficulty = slider.getValue();
 					String name = nameTextField.getText();
 					String user = userComboBox.getSelectedItem().toString();
 					String desc = descriptionField.getText();
 					String type = typeDropdown.getSelectedItem().toString();
-					Integer timeRemaining = timeSlider.getValue();
-					//House.createCustomChore()	
+					int timeRemaining = timeSlider.getValue();
+					
+					window.getHouse().createCustomChore(name, desc, type, timeRemaining, user, difficulty);
+					
 					//The callback to add chore to gui should be in the controller not here
-					ViewChoreTabsPanel.getInstance().addNewChorePanel(name, desc, type, timeRemaining.toString(), user, difficulty.toString());
+					
 					nameTextField.setText("");
 					descriptionField.setText("");
 				}
